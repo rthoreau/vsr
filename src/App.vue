@@ -1,50 +1,38 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view class="page" @session="session()"></router-view>
-    <nav v-if="user_id">
+    <nav class="nav" v-if="user_id">
       <ul>
         <li><router-link to="/Don">Don</router-link></li>
-        <li><router-link to="/Don">Event</router-link></li>
-        <li><router-link to="/Don">Dashboard</router-link></li>
-        <li><router-link to="/Don">Petition</router-link></li>
-        <li><router-link to="/Don">Compte</router-link></li>
+        <li><router-link to="/EventDash">Events</router-link></li>
+        <li><router-link to="/Dashboard">Dashboard</router-link></li>
+        <li><router-link to="/Petitions">Pétitions</router-link></li>
+        <li><router-link to="/Account">Compte</router-link></li>
       </ul>
     </nav>
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-    <div v-if="user_id">
-      <p>{{prenom + ' ' + nom}}</p>
-      <button @click="disconnect()">Deconnexion</button>
+    <router-view class="page" @session="session()"></router-view>
+    <div v-if="false">
+      <button @click="request()">Request</button>
+      <p><label>Titre <input type="text" name="titre" v-model="titre"></label></p>
+      <p><label>Date <input type="date" name="date" v-model="date"></label>
+      <label> Heure <input type="time" name="time" v-model="time"></label></p>
+      <p><label>Lieu <input type="text" name="lieu" v-model="lieu"></label></p>
+      <p><label>Description <textarea name="description" v-model="description"></textarea></label></p>
+      <p>Type</p>
+      <p><label><input type="radio" value="0" v-model="type" name="type">Plage</label>
+      <label><input type="radio" value="1" v-model="type" name="type">Lac</label>
+      <label><input type="radio" value="2" v-model="type" name="type">Rivière</label>
+      <label><input type="radio" value="3" v-model="type" name="type">Sous-marin</label>
+      </p>
+      <p class="action"><button @click="add()">Enregistrer</button></p>
+      <Event v-for="(data) in events" 
+        :key="data.id" 
+        :event="data" @refresh="request()"></Event>
     </div>
-    <div v-else>
-      <p><label>Mail <input type="text" name="mail" v-model="mail"></label></p>
-      <p><label>Mot de passe <input type="password" name="mdp" v-model="mdp" v-on:keyup.enter="connect()"></label></p>
-      <button @click="connect()">Connexion</button>
-    </div>
-    <button @click="request()">Request</button>
-    <p><label>Titre <input type="text" name="titre" v-model="titre"></label></p>
-    <p><label>Date <input type="date" name="date" v-model="date"></label>
-    <label> Heure <input type="time" name="time" v-model="time"></label></p>
-    <p><label>Lieu <input type="text" name="lieu" v-model="lieu"></label></p>
-    <p><label>Description <textarea name="description" v-model="description"></textarea></label></p>
-    <p>Type</p>
-    <p><label><input type="radio" value="0" v-model="type" name="type">Plage</label>
-    <label><input type="radio" value="1" v-model="type" name="type">Lac</label>
-    <label><input type="radio" value="2" v-model="type" name="type">Rivière</label>
-    <label><input type="radio" value="3" v-model="type" name="type">Sous-marin</label>
-    </p>
-    <input type="hidden" name="id" v-model="id">
-    <p class="action"><button @click="add()">Enregistrer</button></p>
-    <Event v-for="(data) in events" 
-      :key="data.id" 
-      :event="data" @refresh="request()"></Event>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 import axios from 'axios'
-import VueAxios from 'vue-axios'
 import Event from './components/Event.vue'
 
 export default {
@@ -67,7 +55,6 @@ export default {
     }
   },
   components: {
-    HelloWorld,
     Event
   },
   methods: {
@@ -153,27 +140,89 @@ export default {
       this.user_id = 0
       this.nom = ''
       this.prenom = ''
+      this.session();
     },
-    session(){
+    session(first){
       this.prenom = this.$session.get('prenom')
       this.nom = this.$session.get('nom')
       this.user_id = this.$session.get('user_id')
-      console.log(this.$session.get('user_id'));
+      if(!this.user_id) {
+        this.$router.push({path: '/Login'});
+      } else if (!first) {
+        this.$router.push({path: '/Dashboard'});
+      }
     }
   },
   mounted () {
-    this.session();
+    this.session(true);
   }
 }
 </script>
 
 <style>
+html,body{
+  width:100%;
+  height:100%;
+}
+body{
+  padding:0;
+  margin:0;
+}
+body *{
+  box-sizing:border-box;
+}
+a{
+  color:inherit;
+  text-decoration:none;
+}
+a:hover{
+  color:#1f509b;
+}
+ul{
+  height:100%;
+  width:100%;
+  margin:0;
+  padding:0;
+  list-style-type:none;
+}
+ul li{
+  height:100%;
+  display: inline-block;
+}
+p{
+  margin:0;
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  text-align: left;
   color: #2c3e50;
-  margin-top: 60px;
+  width:100%;
+  height:100%;
+}
+.page{
+  overflow:auto;
+  height:calc(100% - 2.5rem)
+}
+.nav{
+  position:fixed;
+  bottom:0;
+  height:2.4rem;
+  background-color:#ddd;
+  width:100%;
+  text-align:center;
+}
+.nav li {
+  width:20%;
+}
+.nav a{
+  display:inline-block;
+  width:100%;
+  height:100%;
+  padding:0.5rem 0;
+}
+.nav a.router-link-exact-active{
+  background-color:#b6bebb;
 }
 </style>
