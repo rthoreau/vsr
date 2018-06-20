@@ -25,12 +25,6 @@
 </template>
 
 <script>
-import image from "../assets/badgemoney.svg"
-import image2 from "../assets/badge2.svg"
-import image3 from "../assets/badge3.svg"
-import image4 from "../assets/badge4.svg"
-import image5 from "../assets/badge5.svg"
-import image6 from "../assets/badge6.svg"
 export default {
   name: 'Dashboard',
   data () {
@@ -38,12 +32,12 @@ export default {
       popupVisible:false,
       activeBadge: {pic: '', txt: ''},
       badges: [
-        {pic: image, txt: 'Lorem ipsum  officia molestias. Consequuntur esse impedit hic illo! Sapiente quo blanditiis illo, aperiam quibusdam ipsa.', title: 'Bébé donateur'},
-        {pic: image2, txt: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corrupti, minus? Perspiciatis sed dignissimos sapiente harum exercitationem officia molestias. Consequuntte quo blanditiis illo, aperiam quibusdam ipsa.', title: '???'},
-        {pic: image3, txt: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corrupti, minus? Perspiciatis sed dignissimos sapiente haras. Consequuntur esse impedit hic illo! Satiis illo, aperiam quibusdam ipsa.', title: '???'},
-        {pic: image4, txt: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corrupti, minus? Perspiciatis sed dignissimos sapiente harum exercitationem officia molestias. Consequuntur esse impedit hic illo! Sapiente quo blanditiis illo, aperiam quibusdam ipsa.', title: '???'},
-        {pic: image5, txt: 'Lorem ipsum dolor sit Consequuntur esse impedit hic illo! Sapiente quo blanditiis illo, aperiam quibusdam ipsa.', title: '???'},
-        {pic: image6, txt: 'Lorem ipsum dolor sit am. Corrupti, minus? Perspiciatis sed dignissimos sapiente harum exercitationem officia molestias. Consequuntur esse impedit hic illo! Sapiente quo blanditiis illo, aperiam quibusdam ipsa.', title: '???'}
+        {pic: "http://surfrider.alwaysdata.net/img/badgemoney.svg", txt: 'Lorem ipsum  officia molestias. Consequuntur esse impedit hic illo! Sapiente quo blanditiis illo, aperiam quibusdam ipsa.', title: 'Bébé donateur'},
+        {pic: "http://surfrider.alwaysdata.net/img/badge2.svg", txt: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corrupti, minus? Perspiciatis sed dignissimos sapiente harum exercitationem officia molestias. Consequuntte quo blanditiis illo, aperiam quibusdam ipsa.', title: '???'},
+        {pic: "http://surfrider.alwaysdata.net/img/badge3.svg", txt: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corrupti, minus? Perspiciatis sed dignissimos sapiente haras. Consequuntur esse impedit hic illo! Satiis illo, aperiam quibusdam ipsa.', title: '???'},
+        {pic: "http://surfrider.alwaysdata.net/img/badge4.svg", txt: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corrupti, minus? Perspiciatis sed dignissimos sapiente harum exercitationem officia molestias. Consequuntur esse impedit hic illo! Sapiente quo blanditiis illo, aperiam quibusdam ipsa.', title: '???'},
+        {pic: "http://surfrider.alwaysdata.net/img/badge5.svg", txt: 'Lorem ipsum dolor sit Consequuntur esse impedit hic illo! Sapiente quo blanditiis illo, aperiam quibusdam ipsa.', title: '???'},
+        {pic:  "http://surfrider.alwaysdata.net/img/badge6.svg", txt: 'Lorem ipsum dolor sit am. Corrupti, minus? Perspiciatis sed dignissimos sapiente harum exercitationem officia molestias. Consequuntur esse impedit hic illo! Sapiente quo blanditiis illo, aperiam quibusdam ipsa.', title: '???'}
       ]
     }
   },

@@ -63,7 +63,7 @@ export default {
   methods: {
     add () {
       var self = this;
-      axios.post('http://localhost:8888/psr/xmlhttp.php', {
+      axios.post('http://surfrider.alwaysdata.net/xmlhttp.php', {
         operation: 'event',
         id: self.id,
         titre: self.titre,
@@ -87,7 +87,7 @@ export default {
     },
     request () {
       var self = this;
-      axios.post('http://localhost:8888/psr/xmlhttp.php', {
+      axios.post('http://surfrider.alwaysdata.net/xmlhttp.php', {
         operation: 'events',
         id: self.$session.get('user_id'),
         mode: 'json'

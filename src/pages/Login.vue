@@ -2,7 +2,7 @@
   <div id="login">
     <div class="logo">
       <div class="logo-container">
-        <img src="../assets/logo.png" alt="">
+        <img src="http://surfrider.alwaysdata.net/img/logo.png" alt="">
       </div>
       <p class="title">Wave'Up</p>
     </div>
@@ -35,7 +35,7 @@ export default {
   methods: {
     connect() {
       var self = this;
-      axios.post('http://localhost:8888/psr/xmlhttp.php', {
+      axios.post('http://surfrider.alwaysdata.net/xmlhttp.php', {
         operation: 'connexion',
         mail:self.mail,
         mdp: self.mdp,

@@ -11,7 +11,6 @@
 
 <script>
 import axios from 'axios'
-import VueAxios from 'vue-axios'
 
 export default {
   name: 'Event',
@@ -21,7 +20,7 @@ export default {
   methods: {
     particip(check) {
       var self = this;
-      axios.post('http://localhost:8888/psr/xmlhttp.php', {
+      axios.post('http://surfrider.alwaysdata.net/xmlhttp.php', {
         operation: 'participe',
         id_user: self.$session.get('user_id'),
         id_event: self.event.id,

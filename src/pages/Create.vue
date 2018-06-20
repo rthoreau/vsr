@@ -44,7 +44,7 @@ export default {
         return;
       }
       var self = this;
-      axios.post('http://localhost:8888/psr/xmlhttp.php', {
+      axios.post('http://surfrider.alwaysdata.net/xmlhttp.php', {
         operation: 'create',
         mail:self.mail,
         mdp: self.mdp,
