@@ -62,7 +62,7 @@ export default {
       projects: [
         { id:0,
           titre: 'Collecte en bord de mer', 
-          pic: 'https://lemballageecologique.com/wp-content/uploads/2012/11/nouveau_logo_emballages1-1.jpg',
+          pic: 'https://previews.123rf.com/images/american911/american9111503/american911150300325/38431604-pollution-poubelles-le-plastique-et-les-d%C3%A9chets-sur-la-plage-apr%C3%A8s-les-temp%C3%AAtes-d-hiver-la-mer-d-azo.jpg',
           progress: '10%',
           progressText: '5000€',
           desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex dolore dicta recusandae harum tempore quia libero consequuntur repudiandae dolores quos molestias unde eius error consectetur, ullam, ratione modi debitis voluptas?'
@@ -116,5 +116,11 @@ export default {
 }
 .acc.open label:after{
   border-color:#181818 transparent transparent transparent;
+}
+#don .title{
+  font-size:1.5rem;
+  letter-spacing:0.1rem;
+  margin-top:5%;
+  text-align:center;
 }
 </style>

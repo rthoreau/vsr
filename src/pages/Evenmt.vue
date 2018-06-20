@@ -40,7 +40,7 @@
       <label><input type="radio" name="kit"> Oui</label>
       <label><input type="radio" name="kit"> Non</label>
     </p>
-    <button>Organiser</button>
+    <button @click="add()">Organiser</button>
   </div>
 </template>
 

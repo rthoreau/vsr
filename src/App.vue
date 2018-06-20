@@ -4,7 +4,7 @@
       <ul>
         <li><router-link to="/Don">Don</router-link></li>
         <li><router-link to="/EventDash">Events</router-link></li>
-        <li><router-link to="/Dashboard">Dashboard</router-link></li>
+        <li><router-link to="/Dashboard">Board</router-link></li>
         <li><router-link to="/Petitions">Pétitions</router-link></li>
         <li><router-link to="/Account">Compte</router-link></li>
       </ul>
@@ -193,36 +193,68 @@ p{
   margin:0;
 }
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family:"Open Sans", Helvetica, Sans-Serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: left;
-  color: #2c3e50;
+  color: white;
   width:100%;
   height:100%;
+  background:linear-gradient(#2EE7B7, #2EC9E1);
 }
 .page{
   overflow:auto;
-  height:calc(100% - 2.5rem)
+  height:calc(100% - 3.5rem);
+}
+.page:after{
+  content:'';
+  height:0.5rem;
+  width:100%;
+  display:block;
 }
 .nav{
   position:fixed;
   bottom:0;
-  height:2.4rem;
+  height:3.5rem;
   background-color:#ddd;
   width:100%;
   text-align:center;
+  box-shadow:0 -5px 5px rgba(0, 171, 187, 0.3);
 }
 .nav li {
+  position:relative;
   width:20%;
 }
 .nav a{
   display:inline-block;
   width:100%;
   height:100%;
-  padding:0.5rem 0;
+  padding:1.25rem 0;
+  border-radius:0;
+  box-shadow:none;
+  font-weight:bold;
+  text-transform:uppercase;
+  vertical-align: top;
+  font-size:0.8rem;
+}
+.nav li + li a{
+  border-left:2px solid rgba(46, 201, 225, 0.205);
 }
 .nav a.router-link-exact-active{
-  background-color:#b6bebb;
+  background-color:#00aabb;
+  border:none;
+  color:white;
+  padding-top:0.7rem;
+}
+.nav a.router-link-exact-active:before{
+  background-color:#00aabb;
+  content:'';
+  width:100%;
+  height:1rem;
+  top:0;
+  position:absolute;
+  left:0;
+  transform:translate(0, -100%);
+  box-shadow:0 -5px 15px 2px rgba(0, 171, 187, 0.4);
 }
 </style>
