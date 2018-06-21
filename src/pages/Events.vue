@@ -1,9 +1,21 @@
 <template>
-  <div id="events">
+  <div id="events" class="events">
     <button class="back-link" @click="$router.go(-1)"><i class="fa fa-chevron-left"></i> Retour</button>
     <p class="from"><input type="text" value="50 avenue de l'impératrice, BIARRITZ 64200"></p>
     <p class="title">événements à proximité</p>
-    
+    <div class="projet" v-for="(e, index) in events" :key="index" @click="$router.push({path:'/Event/' + e.id})">
+      <div class="image-container rel">
+        <img :src="e.pic" alt="">
+        <span class="dist"><i class="check"></i>à {{Math.floor(Math.random() * Math.floor(150))/10}} km</span>
+      </div>
+      <p class="project-title">{{e.titre}}</p>
+      <div class="content">
+        <span><i class="fa fa-calendar"></i> {{e.date}}</span>
+        <span><i class="fa fa-clock"></i> {{e.time}}</span>
+        <span><i class="fa fa-user"></i> {{e.particips ? e.particips : 2}}</span>
+        <span><i class="fa fa-tag"></i> {{types[e.type]}}</span>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -19,7 +31,7 @@ export default {
   data () {
     return {
       events: [],
-      type: ['Plage', 'Lac', 'Rivière', 'Sous-marin']
+      types: ['Plage', 'Lac', 'Rivière', 'Sous-marin']
     }
   },
   methods: {
@@ -76,14 +88,14 @@ export default {
   border-radius:5px;
   color:#ccc;
 }
-#events .content{
+.page.events .content{
   font-weight:normal;
   font-size:0.85rem;
 }
-#events .content span{
+.page.events .content span{
   display:inline-block;
 }
-#events .projet i {
+.page.events .projet i {
   margin:0 0.3rem;
 }
 </style>

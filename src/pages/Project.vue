@@ -179,13 +179,13 @@ export default {
   text-align:left;
   margin-top:15px;
 }
-#project .img-content{
+.img-content{
   display:inline-block;
   width:48%;
   position:relative;
   margin-bottom:12px;
 }
-#project .img-content:nth-child(2n) {
+.img-content:nth-child(2n) {
   margin-left:4%;
 }
 #project .title2{
@@ -201,5 +201,6 @@ export default {
   left:0;
   border-radius:8px;
   object-fit: cover;
+  box-shadow:0 2px 10px rgba(13, 88, 72, 0.2);
 }
 </style>
