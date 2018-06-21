@@ -134,6 +134,7 @@ export default {
   text-transform:uppercase;
   font-size:1.6rem;
   margin-bottom:15px;
+  position:relative;
 }
 .ptitle{
   font-weight:bold;
@@ -151,5 +152,34 @@ export default {
 }
 .popup .debloc{
   font-weight:bold;
+}
+.line{
+  position:absolute;
+  display:inline-block;
+  vertical-align:top;
+  width:3px;
+  height:15px;
+  background-color:#ffde6b;
+  transform:rotate(60deg);
+  right:-10px;
+  top:20px;
+}
+.line.big{
+  height:25px;
+  transform:rotate(45deg);
+  right:10px;
+  top:0;
+}
+.line.left{
+  transform:rotate(-60deg);
+  right:auto;
+  left:-10px;
+  top:20px;
+}
+.line.left.big{
+  transform:rotate(-45deg);
+  left:10px;
+  right:auto;
+  top:0;
 }
 </style>
