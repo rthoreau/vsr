@@ -55,6 +55,10 @@ export default {
     .catch(function (error) {
       console.log(error);
     });
+    this.$emit('nav', 'event');
+  },
+  beforeDestroy () {
+    this.$emit('nav', '');
   }
 }
 </script>

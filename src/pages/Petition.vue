@@ -46,6 +46,10 @@ export default {
   },
   mounted () {
     this.data = this.petitions.filter(p => p.id.toString() === this.$route.params.id)[0];
+    this.$emit('nav', 'petitions');
+  },
+  beforeDestroy () {
+    this.$emit('nav', '');
   }
 }
 </script>

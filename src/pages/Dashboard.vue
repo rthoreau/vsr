@@ -16,9 +16,9 @@
     </section>
     <div class="popup" v-if="popupVisible" @click="popupVisible = false">
       <div class="popup-content">
-        <p class="bravo">Bravo !</p>
+        <p class="bravo"><i class="line left"></i> <i class="line left big"></i>Bravo !<i class="line big"></i><i class="line"></i></p>
         <div class="pic"><img :src="activeBadge.pic" alt=""></div>
-        <p class="debloc">Tu as débloqué ton premier badge</p>
+        <p class="debloc">Tu as débloqué ton premier badge !</p>
         <p class="ptitle">{{activeBadge.title}}</p>
         <p class="discover">Découvre vite les autres badges et monte en niveau</p>
       </div>

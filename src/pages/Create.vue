@@ -147,8 +147,8 @@ i.red{
   content:'';
   width:0;
   height:0;
-  right:10%;
-  top:50%;
+  right:11%;
+  top:48%;
   margin-top:5px;
   transform:translate(0,-50%);
   border:7px solid;

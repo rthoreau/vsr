@@ -62,7 +62,7 @@ export default {
     text-align:center;
     outline:none;
     border:1px solid rgba(136, 136, 136, 0.336);
-    padding:0.1rem 3rem 0.1rem 0.5rem;
+    padding:0.1rem 1rem 0.1rem 0.5rem;
   }
   .free-amount label:after, .free-amount label:before{
     content:'';
@@ -85,7 +85,9 @@ export default {
     text-align:right;
     color:#888;
     font-size:1rem;
-    width:3rem;
+    width:4rem;
+    padding:0 0 0 0.5rem;
     outline:none;
+    border:none;
   }
 </style>

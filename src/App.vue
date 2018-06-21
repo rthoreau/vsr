@@ -2,14 +2,14 @@
   <div id="app" :style="'max-width:' + maxwidth + 'px;'">
     <nav class="nav" v-if="user_id" :style="'max-width:' + maxwidth + 'px;'">
       <ul>
-        <li><router-link to="/Don">Don</router-link></li>
-        <li><router-link to="/EventDash">Events</router-link></li>
-        <li><router-link to="/Dashboard">Board</router-link></li>
-        <li><router-link to="/Petitions">Pétitions</router-link></li>
-        <li><router-link to="/Account">Compte</router-link></li>
+        <li><router-link to="/Don" :class="active === 'don' ?'selected' : ''">Don</router-link></li>
+        <li><router-link to="/EventDash" :class="active === 'event' ?'selected' : ''">Events</router-link></li>
+        <li><router-link to="/Dashboard" :class="active === 'board' ?'selected' : ''">Board</router-link></li>
+        <li><router-link to="/Petitions" :class="active === 'petitions' ?'selected' : ''">Pétitions</router-link></li>
+        <li><router-link to="/Account" :class="active === 'account' ?'selected' : ''">Compte</router-link></li>
       </ul>
     </nav>
-    <router-view class="page" @session="session()"></router-view>
+    <router-view class="page" @session="session()" @nav="setclass"></router-view>
     <div v-if="false">
       <button @click="request()">Request</button>
       <p><label>Titre <input type="text" name="titre" v-model="titre"></label></p>
@@ -53,6 +53,7 @@ export default {
       nom: '',
       events: [],
       maxwidth:0,
+      active: ''
     }
   },
   components: {
@@ -152,6 +153,10 @@ export default {
       } else if (!first) {
         this.$router.push({path: '/Dashboard'});
       }
+    },
+    setclass(val){
+      console.log('tes')
+      this.active = val;
     }
   },
   mounted () {
@@ -258,13 +263,13 @@ p{
 .nav li + li a{
   border-left:2px solid rgba(46, 201, 225, 0.205);
 }
-.nav a.router-link-exact-active{
+.nav a.router-link-exact-active, .nav a.selected{
   background-color:#00aabb;
   border:none;
   color:white;
   padding-top:0.7rem;
 }
-.nav a.router-link-exact-active:before{
+.nav a.router-link-exact-active:before, .nav a.selected:before{
   background-color:#00aabb;
   content:'';
   width:100%;
@@ -272,7 +277,7 @@ p{
   top:0;
   position:absolute;
   left:0;
-  transform:translate(0, -100%);
+  transform:translate(0, -98%);
   box-shadow:0 -5px 15px 2px rgba(0, 171, 187, 0.4);
 }
 </style>

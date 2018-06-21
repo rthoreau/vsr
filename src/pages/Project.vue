@@ -27,7 +27,7 @@
         <progressval :val="data.progress"></progressval>
         <p class="progress-amount"><load :val="data.progressText"></load></p>
       </div>
-      <span class="progress-text">€</span>
+      <span class="progress-text">{{data.max}}</span>
     </div>
     <div class="title2">Soutenir le projet</div>
     <amount></amount>
@@ -96,6 +96,10 @@ export default {
   },
   mounted () {
     this.data = this.projects.filter(p => p.id.toString() === this.$route.params.id)[0];
+    this.$emit('nav', 'don');
+  },
+  beforeDestroy () {
+    this.$emit('nav', '');
   }
 }
 </script>
