@@ -1,25 +1,15 @@
 <template>
   <div id="petition" v-if="this.data">
-    <button class="back-link" @click="$router.go(-1)">Retour</button>
-    <div class="head">
-      <img :src="data.pic" alt="">
+    <button class="back-link" @click="$router.go(-1)"><i class="fa fa-chevron-left"></i> Retour</button>
+    <div class="projet">
+      <div class="head">
+        <img :src="data.pic" alt="">
+      </div>
+      <p class="project-title">{{data.titre}}</p>
+      <p class="desc">{{data.desc}}</p>
     </div>
-    <p class="title">{{data.titre}}</p>
-    <p class="desc">{{data.desc}}</p>
-    <p class="sign"><i class="check"></i> {{data.sign}} signataires</p>
-    <div class="title2">Médias</div>
-    <div class="medias">
-      <div class="img-content">
-        <img src="http://www.tvba.fr/wp-content/uploads/2014/03/de%CC%81chet-plage-21.jpg" alt="">
-      </div>
-      <div class="img-content">
-        <img src="http://www.tvba.fr/wp-content/uploads/2014/03/de%CC%81chet-plage-21.jpg" alt="">
-      </div>
-      <div class="img-content">
-        <img src="http://www.tvba.fr/wp-content/uploads/2014/03/de%CC%81chet-plage-21.jpg" alt="">
-      </div>
-    </div>
-    <button class="sticky">Signer</button>
+    <p class="sign"><i class="check"></i> {{data.sign}} <span class="small"> signataires </span></p>
+    <button class="sticky yb">Signer</button>
   </div>
 </template>
 
@@ -61,4 +51,17 @@ export default {
 </script>
 
 <style>
+#petition .desc{
+  text-align:left;
+  font-weight:normal;
+}
+.small{
+  display:block;
+  margin:5px auto 30px;;
+  font-size:0.4em;
+}
+#petition .yb{
+  font-size:0.8rem;
+  padding:0.8rem 3.5rem;
+}
 </style>

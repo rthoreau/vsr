@@ -1,16 +1,17 @@
 <template>
   <div id="petitions">
-    <p class="title">Pétitions</p>
-    <p>Faites entendre votre voix en faveur des océans</p>
-    <p class="center">Déjà <b>14109</b> signatures</p>
-    <div class="petition" v-for="(p, index) in petitions" :key="index" @click="$router.push({path: '/Petition/' + p.id})">
+    <p class="title htitle">Pétitions</p>
+    <p class="desc">Faites entendre votre voix en faveur des océans</p>
+    <p class="desc">Déjà
+    <span class="sign">14109</span>
+    signataires</p>
+    <div class="projet" v-for="(p, index) in petitions" :key="index" @click="$router.push({path: '/Petition/' + p.id})">
       <div class="image-container">
         <img :src="p.pic" alt="">
-        <span><i class="check"></i>{{p.sign}} signatures</span>
+        <span class="signs"><i class="check"></i>{{p.sign}} signatures</span>
       </div>
       <div class="project-title">{{p.titre}}</div>
-      <div class="content">{{p.desc}}</div>
-      <button>Signer</button>
+      <button class="yb">Signer</button>
     </div>
   </div>
 </template>
@@ -49,4 +50,47 @@ export default {
 </script>
 
 <style>
+#petitions .desc{
+  font-weight:bold;
+  width:80%;
+  margin:20px auto;
+  font-size:1.2rem;
+  line-height:1.1;
+}
+.sign{
+  display:block;
+  line-height:1.1;
+  font-size:3rem;
+  font-weight:800;
+  margin:5px;
+}
+.signt{
+  position:relative;
+  opacity:0.9;
+  width:90%;
+  margin:auto;
+  padding-bottom:20px;
+  text-align:center;
+}
+.signt:after{
+  height:1px;
+  width:90%;
+  background-color:white;
+  position:absolute;
+  bottom:0;
+  left:5%;
+  content:'';
+}
+.signs{
+  display:inline-block;
+  margin:10px 0 0;
+}
+.yb{
+  background-color:#ffde6b;
+  color:white;
+  text-transform:uppercase;
+  font-weight:bold;
+  font-size:0.9rem;
+  padding:0.5rem 3rem;
+}
 </style>

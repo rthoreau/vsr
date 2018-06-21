@@ -1,5 +1,5 @@
 <template>
-  <div id="create">
+  <div id="create" class="forms">
     <router-link class="back-link" to="/Login"><i class="fa fa-chevron-left"></i> Retour Connexion</router-link>
     <p class="title">Inscription</p>
     <div class="form">
@@ -93,6 +93,7 @@ export default {
   text-align:left;
   padding:1rem 1.8rem;
   font-size:1.1rem;
+  border-radius:0!important;
   box-shadow:0 2px 10px rgba(13, 88, 72, 0.2);
 }
 .back-link i{
@@ -120,17 +121,17 @@ export default {
   transform:translate(0,-50%);
   font-size:1rem;
 }
-#create .form{
+.forms .form{
   width:75%;
 }
-#create .white-form{
+.forms .white-form{
   padding-bottom:20px;
 }
-#create label{
+.forms label{
   border-bottom:1px solid #2ed9cc;
   margin-bottom:1.4rem;
 }
-#create .form input{
+.forms .form input{
   padding-left:0;
   padding-right:0;
   width:100%;

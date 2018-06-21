@@ -1,6 +1,6 @@
 <template>
-  <div id="app">
-    <nav class="nav" v-if="user_id">
+  <div id="app" :style="'max-width:' + maxwidth + 'px;'">
+    <nav class="nav" v-if="user_id" :style="'max-width:' + maxwidth + 'px;'">
       <ul>
         <li><router-link to="/Don">Don</router-link></li>
         <li><router-link to="/EventDash">Events</router-link></li>
@@ -51,7 +51,8 @@ export default {
       mdp: '',
       prenom: '',
       nom: '',
-      events: []
+      events: [],
+      maxwidth:0,
     }
   },
   components: {
@@ -155,6 +156,14 @@ export default {
   },
   mounted () {
     this.session(true);
+    var self = this;
+    function setmw() {
+      self.maxwidth = document.scrollingElement.offsetHeight * 0.65;
+    }
+    setmw();
+    this.$nextTick(function () {
+      window.addEventListener('resize', setmw);
+    });
   }
 }
 </script>
@@ -200,6 +209,7 @@ p{
   color: white;
   width:100%;
   height:100%;
+  margin:auto;
   background:linear-gradient(#2EE7B7, #2EC9E1);
 }
 .page{
@@ -208,11 +218,12 @@ p{
 }
 .page:after{
   content:'';
-  height:0.5rem;
+  height:3rem;
   width:100%;
   display:block;
 }
 .nav{
+  z-index:10;
   position:fixed;
   bottom:0;
   height:3.5rem;
@@ -236,6 +247,13 @@ p{
   text-transform:uppercase;
   vertical-align: top;
   font-size:0.8rem;
+  -webkit-user-select: none; 
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.nav li + li a{
+  border-left:2px solid rgba(46, 201, 225, 0.205);
 }
 .nav li + li a{
   border-left:2px solid rgba(46, 201, 225, 0.205);

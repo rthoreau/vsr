@@ -2,18 +2,19 @@
   <div id="event">
     <button class="back-link" @click="$router.go(-1)">Retour à la liste</button>
     <p class="title">Organiser un événement</p>
-    <p><label>Titre <input type="text" name="titre" v-model="titre"></label></p>
-    <p>Type</p>
-    <p>
-      <label><input type="radio" value="0" v-model="type" name="type">Plage</label>
-      <label><input type="radio" value="1" v-model="type" name="type">Lac</label>
-      <label><input type="radio" value="2" v-model="type" name="type">Rivière</label>
-      <label><input type="radio" value="3" v-model="type" name="type">Sous-marin</label>
-    </p>
-    <p><label>Lieu <input type="text" name="lieu" v-model="lieu"></label></p>
-    <p><label>Date <input type="date" name="date" v-model="date"></label>
-    <label> Heure <input type="time" name="time" v-model="time"></label></p>
-    <p><label>Description <textarea name="description" v-model="description"></textarea></label></p>
+    <div class="projet" v-for="(e, index) in events" :key="index" @click="$router.push({path: '/Event/' + e.id})">
+      <div class="image-container rel">
+        <img :src="e.pic" alt="">
+        <span class="dist"><i class="check"></i>à {{Math.floor(Math.random() * Math.floor(150))/10}} km</span>
+      </div>
+      <p class="project-title">{{e.titre}}</p>
+      <div class="content">
+        <span><i class="fa fa-calendar"></i> {{e.date}}</span>
+        <span><i class="fa fa-clock"></i> {{e.time}}</span>
+        <span><i class="fa fa-user"></i> {{e.partips ? e.partips : 2}}</span>
+        <span><i class="fa fa-tag"></i> {{type[e.type]}}</span>
+      </div>
+    </div>
     <p>Médias</p>
     <p>
       <label class="file"> <input type="file">Ajouter une photo</label>

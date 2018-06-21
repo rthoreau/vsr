@@ -16,9 +16,11 @@
     </section>
     <div class="popup" v-if="popupVisible" @click="popupVisible = false">
       <div class="popup-content">
+        <p class="bravo">Bravo !</p>
         <div class="pic"><img :src="activeBadge.pic" alt=""></div>
-        <p>{{activeBadge.txt}}</p>
-      <button @click="popupVisible = false">Fermer</button>
+        <p class="debloc">Tu as débloqué ton premier badge</p>
+        <p class="ptitle">{{activeBadge.title}}</p>
+        <p class="discover">Découvre vite les autres badges et monte en niveau</p>
       </div>
     </div>
   </div>
@@ -43,6 +45,9 @@ export default {
   },
   methods: {
     setActive(badge){
+      if (badge.title === '???') {
+        return;
+      }
       this.activeBadge = badge;
       this.popupVisible = true
     }
@@ -57,15 +62,18 @@ export default {
   left:0;
   right:0;
   bottom:0;
-  background:rgba(0,0,0,0.4);
+  background:rgba(0,0,0,0.1);
 }
 .popup-content{
   position:fixed;
   top:50%;
   left:50%;
   transform:translate(-50%,-50%);
-  width:80%;
+  width:70%;
   background-color:white;
+  padding:1.6rem 3rem;
+  color:#ffde6b;
+  border-radius:8px;
 }
 .level{
   margin:1% auto;
@@ -120,5 +128,28 @@ export default {
 .badge img{
   width:80px;
   height:80px;
+}
+.bravo{
+  font-weight:bold;
+  text-transform:uppercase;
+  font-size:1.6rem;
+  margin-bottom:15px;
+}
+.ptitle{
+  font-weight:bold;
+  font-size:1.2rem;
+  margin-bottom:20px;
+}
+.popup img{
+  width:65%;
+  margin-bottom:10px;
+}
+.popup .discover, .popup .debloc{
+  color:#30d3d4;
+  font-size:0.9rem;
+  margin:10px 0;
+}
+.popup .debloc{
+  font-weight:bold;
 }
 </style>

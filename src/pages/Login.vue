@@ -15,7 +15,7 @@
       <button class="fb">Facebook</button>
     </div>
     <div class="create">
-      <p>Pas encore de compte ?</p>
+      <p @click="$router.push({path: '/Create'})">Pas encore de compte ?</p>
       <router-link to="/Create" class="cta">S'inscrire</router-link>
     </div>
   </div>
