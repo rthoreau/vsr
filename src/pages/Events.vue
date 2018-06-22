@@ -3,7 +3,7 @@
     <button class="back-link" @click="$router.go(-1)"><i class="fa fa-chevron-left"></i> Retour</button>
     <p class="from"><input type="text" value="50 avenue de l'impératrice, BIARRITZ 64200"></p>
     <p class="title">événements à proximité</p>
-    <div class="projet" v-for="(e, index) in events" :key="index" @click="$router.push({path:'/Event/' + e.id})">
+    <div class="projet" v-for="(e, index) in events" v-if="e.etat === 'valide'" :key="index" @click="$router.push({path:'/Event/' + e.id})">
       <div class="image-container rel">
         <img :src="e.pic" alt="">
         <span class="dist"><i class="check"></i>à {{Math.floor(Math.random() * Math.floor(150))/10}} km</span>
@@ -45,7 +45,6 @@ export default {
       mode: 'json'
     })
     .then(function (response) {
-      console.log(response.data);
       self.events = response.data.events
       self.events.map(function (e, index) {
         e.pic = imgs[index]

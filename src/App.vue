@@ -9,7 +9,7 @@
         <li><router-link to="/Account" :class="active === 'account' ?'selected' : ''">Compte</router-link></li>
       </ul>
     </nav>
-    <router-view class="page" @session="session()" @nav="setclass"></router-view>
+    <router-view class="page" @session="session()" @nav="setclass" :w="maxwidth"></router-view>
     <div v-if="false">
       <button @click="request()">Request</button>
       <p><label>Titre <input type="text" name="titre" v-model="titre"></label></p>
@@ -155,7 +155,6 @@ export default {
       }
     },
     setclass(val){
-      console.log('tes')
       this.active = val;
     }
   },

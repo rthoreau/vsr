@@ -14,7 +14,7 @@
         <p>{{b.title}}</p>
       </div>
     </section>
-    <div class="popup" v-if="popupVisible" @click="popupVisible = false">
+    <div class="popup" v-if="popupVisible" @click="popupVisible = false" :style="'max-width:' + w + 'px;'">
       <div class="popup-content">
         <p class="bravo"><i class="line left"></i> <i class="line left big"></i>Bravo !<i class="line big"></i><i class="line"></i></p>
         <div class="pic"><img :src="activeBadge.pic" alt=""></div>
@@ -29,6 +29,9 @@
 <script>
 export default {
   name: 'Dashboard',
+  props: {
+    w: true
+  },
   data () {
     return {
       popupVisible:false,
@@ -59,10 +62,11 @@ export default {
 .popup{
   position:fixed;
   top:0;
-  left:0;
-  right:0;
+  left:50%;
   bottom:0;
+  width:100%;
   background:rgba(0,0,0,0.1);
+  transform:translate(-50%, 0);
 }
 .popup-content{
   position:fixed;

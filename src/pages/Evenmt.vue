@@ -44,8 +44,8 @@
         <p class="title htitle">Organisateur</p>
         <div class="form">
           <div class="white-form">
-            <p><label>Nom Prénom<input type="text" readonly :value="auteur_nom + ' ' + auteur_prenom"></label></p>
-            <p>{{auteur_role ? 'Administrateur' : 'Bénévole'}} Surfrider</p>
+            <p><label class="nm">Nom Prénom<input type="text" readonly :value="auteur_nom + ' ' + auteur_prenom"></label>
+            <p class="role">{{auteur_role ? 'Administrateur' : 'Bénévole'}} Surfrider</p>
             <p><label>Adresse mail <input type="text" readonly :value="auteur_mail"></label></p>
             <p><label>Téléphone <input type="text" readonly value="01 02 03 04 05"></label></p>
           </div>
@@ -67,10 +67,10 @@
             <p><label>Titre <input type="text" name="titre" v-model="titre" placeholder="Collecte ..."></label></p>
             <p>Type</p>
             <p class="types">
-              <input type="radio" value="0" v-model="type" id="type_check_1"><label class="radiobtn" for="type_check_1">Plage</label>
-              <input type="radio" value="1" v-model="type" id="type_check_2"><label class="radiobtn" for="type_check_2">Lac</label>
-              <input type="radio" value="2" v-model="type" id="type_check_3"><label class="radiobtn" for="type_check_3">Rivière</label>
-              <input type="radio" value="3" v-model="type" id="type_check_4"><label class="radiobtn" for="type_check_4">Sous-marin</label>
+              <input type="radio" name="type" value="0" v-model="type" id="type_check_1"><label class="radiobtn" for="type_check_1">Plage</label>
+              <input type="radio" name="type" value="1" v-model="type" id="type_check_2"><label class="radiobtn" for="type_check_2">Lac</label>
+              <input type="radio" name="type" value="2" v-model="type" id="type_check_3"><label class="radiobtn" for="type_check_3">Rivière</label>
+              <input type="radio" name="type" value="3" v-model="type" id="type_check_4"><label class="radiobtn" for="type_check_4">Sous-marin</label>
             </p>
             <p><label>Lieu <input type="text" name="lieu" v-model="lieu" placeholder="Paris"></label></p>
             <p class="datetime"><label><i class="fa fa-calendar"></i> <input type="date" name="date" v-model="date"></label>
@@ -94,13 +94,13 @@
           </div>
         </div>
       </section>
-      <p>Souhaitez-vous un kit surfrider pour votre événement ?</p>
-      <p>
-        <label class="radiobtn" :class="kit === '1' ? 'selected' : ''"><input type="radio" v-model="kit" value="1"> Oui</label>
-        <label class="radiobtn" :class="kit === '2' ? 'selected' : ''"><input type="radio" v-model="kit" value="0"> Non</label>
+      <p class="kit">Souhaitez-vous un kit surfrider pour votre événement ?</p>
+      <p class="kitbtn">
+        <input type="radio" v-model="kit" name="kit" value="1" id="check_kit_1"><label class="radiobtn" for="check_kit_1">Oui</label>
+        <input type="radio" v-model="kit" name="kit" value="0" id="check_kit_0"><label class="radiobtn" for="check_kit_0">Non</label>
       </p>
       <p class="htitle"></p>
-      <button class="yb">Participer</button>
+      <button class="yb" @click="add()">Organiser</button>
     </div>
   </div>
 </template>
@@ -140,15 +140,16 @@ export default {
         date: self.date,
         time: self.time,
         lieu: self.lieu,
+        id_auteur: self.$session.get('user_id'),
         description: self.description,
         type: self.type,
         mode: 'json'
       })
       .then(function (response) {
-        if (response.id) {
-          self.$router.push({path: '/Event/' + response.id})
+        if (response.data.id) {
+          self.$router.push({path: '/Events'})
         } else {
-          alert(response.error);
+          alert(response.data.error);
         }
       })
       .catch(function (error) {
@@ -186,7 +187,7 @@ export default {
     }
   },
   mounted () {
-    this.id = this.$route.params.id;
+    this.id = this.$route.params.id ? this.$route.params.id : 0;
     if (this.id) {
       this.request();
     }
@@ -297,6 +298,7 @@ input[readonly]{
   border:none!important;
 }
 #event .datetime label{
+  display:inline-block;
   border-bottom:none;
   width:auto;
   margin:0;
@@ -307,12 +309,12 @@ input[readonly]{
 }
 #event .datetime i{
   color:#888;
-  margin-right:0.5rem;
+  margin-right:0.3rem;
 }
 #event .datetime input{
   display:inline-block;
   width:auto;
-  font-size:1.2rem;
+  font-size:0.8rem;
 }
 .datetime label + label:before{
   display:inline-block;
@@ -335,10 +337,44 @@ select{
   color:#aaa;
   margin:3px 0;
 }
+#event input[type="radio"]:checked + .radiobtn{
+  background-color:#ffde6b;
+  color:#585858;
+}
 #event label.radiobtn:nth-child(2n){
   margin-left:2%;
 }
 .types{
   margin:10px 0 20px;
+}
+.forms .nm{
+  margin-bottom:0;
+}
+.role{
+  margin-bottom:20px;
+  color:#ccc;
+}
+.kit{
+  width:80%;
+  margin:auto;
+  text-align:left;
+}
+.kitbtn{
+  width:80%;
+  text-align:left;
+  margin:20px auto;
+}
+#event .kitbtn .radiobtn{
+  display:inline-block;
+  background-color:white;
+  color:#2fe6b9;
+  font-weight:bold;
+  font-size:1.2rem;
+  padding:0.3rem;
+  width:4.5rem;
+  border-radius:8px;
+}
+#event .kitbtn input[type="radio"]:checked + .radiobtn{
+  color:white;
 }
 </style>
